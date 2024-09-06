@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jardín Infantil La Guardería</title>
+    <link rel="icon" href="IMAG_PAG_WEB_JARDIN/Logo sin fondo.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+<body>
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#admisiones">Admisiones</a></li>
+            <li><a href="#valores-habitos">Valores y Hábitos</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#noticias-eventos">Noticias y Eventos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+        </ul>
+    </nav>
+    <br>
+    <header id="logo-container">
+            <img src="IMAG_PAG_WEB_JARDIN/Logo sin fondo.png" alt="Logo" id="imagen_header_logo">
+            <h1>"La educación de un niño... empieza varias generaciones atrás"</h1>    
+    </header>
+    <section id="bienvenidos">
+        <h2>Bienvenidos al Jardín Infantil La Guardería</h2>
+        <h4>
+            "El lugar donde los sueños de los niños comienzan a hacerse realidad."
+        </h4>        
+        <p>
+            Ofrecemos <strong>educación de calidad para la primera infancia</strong> , enfocándonos en la creación de <strong>hábitos</strong>  y la enseñanza de <strong>valores familiares</strong>  y sociales.
+        </p>
+    </section>
