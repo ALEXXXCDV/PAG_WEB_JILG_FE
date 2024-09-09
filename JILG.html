@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jardín Infantil en Bogotá</title>
+    <link rel="stylesheet" href="JILG_style.css">
+</head>
+<body>
+    <!-- Sección: Header / Conócenos -->
+    <header>
+        <h1>Jardín Infantil en Bogotá</h1>
+        <p>Cuidado y educación infantil de confianza para niños entre 4 meses y 6 años.</p>
+        <nav>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contáctanos</a>
+            <a href="#pre-matricula">Pre-Matrícula</a>
+            <a href="#testimonios">Testimonios</a>
+        </nav>
+    </header>
+
+    <!-- Sección: Servicios -->
+    <section id="servicios">
+        <h2>Servicios</h2>
+        <div class="servicio">
+            <h3>Educación Infantil</h3>
+            <p>Desarrollo integral para niños entre 4 meses y 6 años.</p>
+        </div>
+        <div class="servicio">
+            <h3>Actividades Recreativas</h3>
+            <p>Actividades lúdicas y recreativas para el desarrollo social y físico.</p>
+        </div>
+        <div class="servicio">
+            <h3>Alimentación Saludable</h3>
+            <p>Menús balanceados y nutritivos.</p>
+        </div>
+    </section>
+
+    <!-- Sección: Contacto -->
+    <section id="contacto">
+        <h2>Contáctanos</h2>
+        <p>Dirección: Bogotá, Colombia</p>
+        <p>Teléfono: +57 123 456789</p>
+        <p>Email: contacto@jardinbogota.com</p>
+    </section>
+
+    <!-- Sección: Formulario de Pre-Matrícula -->
+    <section id=" login">
+        <h2>Login Pre-Matrícula</h2>
+        <form id="loginForm">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Ingresar al Formulario</button>
+        </form>
+        <p id="loginMessage"></p>
+    </section>
+    <section id="pre-matricula">
+        <h2>Formulario de Pre-Matrícula</h2>
+        <form id="preMatriculaForm">
+            <label for="nombre">Nombre del Niño/a:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+
+            <label for="nombre_padres">Nombre de los Padres:</label>
+            <input type="text" id="nombre_padres" name="nombre_padres" required>
+
+            <label for="telefono">Número de Contacto:</label>
+            <input type="tel" id="telefono" name="telefono" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="comentarios">Comentarios Adicionales:</label>
+            <textarea id="comentarios" name="comentarios"></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Sección: Testimonios -->
+    <section id="testimonios">
+        <h2>Testimonios</h2>
+        <div class="testimonio">
+            <p>"Excelente atención y un ambiente seguro para los niños. Mi hija está encantada."</p>
+            <p>- Padre de familia</p>
+        </div>
+    </section>
+
+    <script src="JILG.js"></script>
+</body>
+</html>

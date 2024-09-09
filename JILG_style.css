@@ -1,0 +1,78 @@
+/* Colores */
+:root {
+    --turquesa: #40e0d0;
+    --blanco: #ffffff;
+    --verde-manzana: #a8e6cf;
+    --azul-oscuro: #0d3b66;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--blanco);
+    color: var(--azul-oscuro);
+}
+
+header {
+    background-color: var(--turquesa);
+    color: var(--blanco);
+    text-align: center;
+    padding: 20px;
+}
+
+header nav a {
+    margin: 10px;
+    color: var(--blanco);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section {
+    padding: 20px;
+    margin: 10px;
+}
+
+h2 {
+    color: var(--azul-oscuro);
+}
+
+.servicio {
+    background-color: var(--verde-manzana);
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label, form input, form textarea {
+    margin: 5px 0;
+}
+
+button {
+    background-color: var(--azul-oscuro);
+    color: var(--blanco);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--turquesa);
+}
+
+/* Mobile first */
+@media (min-width: 600px) {
+    header, section {
+        text-align: left;
+    }
+
+    .servicio {
+        display: flex;
+        justify-content: space-between;
+    }
+}
