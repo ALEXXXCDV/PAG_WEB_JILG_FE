@@ -3,6 +3,8 @@ window.onload = (event) =>{
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
     const registerForm = document.getElementById('preMatriculaForm');
+    const registerMessage = document.getElementById('registerMessage');
+
 
     loginForm.addEventListener('submit', async function(event){
 
@@ -26,6 +28,7 @@ window.onload = (event) =>{
             if(response.ok){
                 loginMessage.textContent = 'Login Exitoso';
                 loginMessage.style.color = 'turquoise';
+                window.location.href = "preMatricula.html";
             }else{
                 loginMessage.textContent = data.message || 'Error en el Login';
                 loginMessage.style.color = 'orange';
@@ -37,7 +40,7 @@ window.onload = (event) =>{
         }
     });
 
-    registerForm.addEventListener('submit', function(event){
+    registerForm.addEventListener('submit', async function(event){
         event.preventDefault();
         
         const nombre_completo_nino  = document.getElementById('nombre_completo_nino').value;
@@ -78,32 +81,29 @@ window.onload = (event) =>{
         const autorizacion_fotos_videos  = document.getElementById('autorizacion_fotos_videos').value;
         const autorizacion_actividades  = document.getElementById('autorizacion_actividades').value;
 
-
-
-
         try {
-            const response = await fetch('http://localhost:3000/api/login', {
+            const response = await fetch('http://localhost:3000/create_informacion_nino', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({"username": username, "password": password}),
+                body: JSON.stringify({nombre_completo_nino: nombre_completo_nino, fecha_nacimiento: fecha_nacimiento, genero: genero, lugar_nacimiento: lugar_nacimiento, numero_identificacion: numero_identificacion, experiencia_previa: experiencia_previa, expectativas_padres: expectativas_padres, nombre_padre: nombre_padre,ocupacion_padre: ocupacion_padre, lugar_trabajo_padre: lugar_trabajo_padre,  telefono_trabajo_padre: telefono_trabajo_padre, nombre_madre: nombre_madre, ocupacion_madre: ocupacion_madre, lugar_trabajo_madre: lugar_trabajo_madre, telefono_trabajo_madre: telefono_trabajo_madre,  direccion_completa: direccion_completa, telefono_emergencia: telefono_emergencia, correo_electronico: correo_electronico, estado_civil_padres: estado_civil_padres, personas_autorizadas: personas_autorizadas,documento_personas_autorizadas: documento_personas_autorizadas, consentimiento_medico: consentimiento_medico, alergias: alergias, condiciones_medicas: condiciones_medicas, vacunas_al_dia: vacunas_al_dia,medicamentos: medicamentos, seguro_medico: seguro_medico, rh_nino: rh_nino, preferencias_alimenticias: preferencias_alimenticias, habitos_sueno: habitos_sueno,necesidades_especiales: necesidades_especiales, intereses: intereses, socializacion: socializacion, metodos_disciplina: metodos_disciplina, autorizacion_salidas: autorizacion_salidas,autorizacion_fotos_videos: autorizacion_fotos_videos,autorizacion_actividades: autorizacion_actividades}),
             });
 
             const data = await response.json();
             console.log(data);
 
             if(response.ok){
-                loginMessage.textContent = 'Login Exitoso';
-                loginMessage.style.color = 'turquoise';
+                registerMessage.textContent = 'Registro Exitoso';
+                registerMessage.style.color = 'turquoise';
             }else{
-                loginMessage.textContent = data.message || 'Error en el Login';
-                loginMessage.style.color = 'orange';
+                registerMessage.textContent = data.message || 'Error en el Registro';
+                registerMessage.style.color = 'orange';
             }
         } catch (error) {
             console.log(error)
-            loginMessage.textContent = 'Error en el Login';
-            loginMessage.style.color = 'grey'
+            registerMessage.textContent = 'No se pudo realizar el REGISTRO';
+            registerMessage.style.color = 'grey'
         }
     })
 }
