@@ -1,5 +1,5 @@
 // scripts.js
-window.onload = (event) =>{
+window.onload = () =>{
     const loginForm = document.getElementById('loginForm');
     const loginMessage = document.getElementById('loginMessage');
     const registerForm = document.getElementById('preMatriculaForm');
@@ -40,8 +40,10 @@ window.onload = (event) =>{
         }
     });
 
-    registerForm.addEventListener('submit', async function(event){
-        event.preventDefault();
+    registerForm.addEventListener('submit', async function(e){
+        e.preventDefault();
+        console.log('Entramos al formulario');
+
         
         const nombre_completo_nino  = document.getElementById('nombre_completo_nino').value;
         const fecha_nacimiento  = document.getElementById('fecha_nacimiento').value;
