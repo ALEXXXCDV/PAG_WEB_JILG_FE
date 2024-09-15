@@ -7,8 +7,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;    margin: 0;
     padding: 0;
     background-color: var(--blanco);
     color: var(--azul-oscuro);
@@ -21,16 +20,99 @@ header {
     padding: 20px;
 }
 
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    background: linear-gradient(to right, #008080, #32CD32); /* Gradiente inicial */
+    -webkit-background-clip: text;
+    color: transparent;
+    transition: background 0.4s ease;
+}
+
+/* Animación del fondo de las letras al hacer hover */
+h1:hover {
+    background: linear-gradient(to right, #32CD32, #008080); /* Invertir los colores del gradiente */
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+h1 {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
 header nav a {
-    margin: 10px;
+    margin: 0 10px;
     color: var(--blanco);
     text-decoration: none;
-    font-weight: bold;
+    font-size: 1.1em;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #008080; /* Azul oscuro */
+    transform: scale(1.05);
 }
 
 section {
     padding: 20px;
     margin: 10px;
+}
+
+/* Contenedor de la galería */
+section.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+/* Cada figura dentro de la galería */
+figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+
+figure img, figure video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Efecto hover (zoom y opacidad) */
+figure:hover img, figure:hover video {
+    transform: scale(1.1); /* Zoom suave */
+    opacity: 0.9; /* Ligero cambio de opacidad */
+}
+
+/* Estilos para la leyenda debajo de cada figura */
+figcaption {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.9em;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 h2 {
@@ -42,6 +124,27 @@ h2 {
     margin: 10px 0;
     padding: 15px;
     border-radius: 8px;
+}
+
+#login {
+    display: grid;
+    justify-content: center;
+}
+
+#login h2 {
+    text-align: center;
+    color: #0d3b66; /* Azul oscuro */
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+#loginForm{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(1, 1, 1, 1);
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
 }
 
 form {
@@ -65,6 +168,13 @@ button:hover {
     background-color: var(--turquesa);
 }
 
+footer{
+    text-align: center;
+    padding: 5px;
+    background-color: var(--turquesa);
+    border-top: 1px solid var(--azul-oscuro);
+}
+
 /* Mobile first */
 @media (min-width: 600px) {
     header, section {
@@ -74,5 +184,29 @@ button:hover {
     .servicio {
         display: flex;
         justify-content: space-between;
+    }
+}
+
+ /* Estilos para pantallas más grandes */
+ @media (min-width: 768px) {
+    h1 {
+        font-size: 3.5em;
+        text-align: center;
+    }
+
+    p {
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    nav {
+        text-align: center;    }
+
+    nav a {
+        font-size: 1.2em;
+    }
+
+    section.galeria {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
 }
