@@ -6,45 +6,51 @@ window.onload = () =>{
     const registerMessage = document.getElementById('registerMessage');
 
 
-    loginForm.addEventListener('submit', async function(event){
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(event){
 
-        event.preventDefault();
-        
-        const username  = document.getElementById('username').value;
-        const password  = document.getElementById('password').value;
-
-        try {
-            const response = await fetch('http://localhost:3000/api/login', {
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({"username": username, "password": password}),
-            });
-
-            const data = await response.json();
-            console.log(data);
-
-            if(response.ok){
-                loginMessage.textContent = 'Login Exitoso';
-                loginMessage.style.color = 'turquoise';
-                window.location.href = "preMatricula.html";
-            }else{
-                loginMessage.textContent = data.message || 'Error en el Login';
-                loginMessage.style.color = 'orange';
+            event.preventDefault();
+            
+            const username  = document.getElementById('username').value;
+            const password  = document.getElementById('password').value;
+    
+            try {
+                const response = await fetch('http://localhost:3000/api/login', {
+                    method: 'POST',
+                    headers:{
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({"username": username, "password": password}),
+                });
+    
+                const data = await response.json();
+                const miToken = data.accessToken;
+                localStorage.setItem('token', miToken);                
+                
+                if(response.ok){
+                    loginMessage.textContent = 'Login Exitoso';
+                    loginMessage.style.color = 'turquoise';
+                    window.location.href = `preMatricula.html`;
+                }else{
+                    loginMessage.textContent = data.message || 'Error en el Login';
+                    loginMessage.style.color = 'orange';
+                }
+            } catch (error) {
+                console.log(error)
+                loginMessage.textContent = 'Error en el Login';
+                loginMessage.style.color = 'grey'
             }
-        } catch (error) {
-            console.log(error)
-            loginMessage.textContent = 'Error en el Login';
-            loginMessage.style.color = 'grey'
-        }
-    });
+        });
+    }
+
+
+    if (registerForm) {
 
     registerForm.addEventListener('submit', async function(e){
         e.preventDefault();
-        console.log('Entramos al formulario');
+        const miToken = localStorage.getItem('token');
 
-        
+
         const nombre_completo_nino  = document.getElementById('nombre_completo_nino').value;
         const fecha_nacimiento  = document.getElementById('fecha_nacimiento').value;
         const genero  = document.getElementById('genero').value;
@@ -87,8 +93,11 @@ window.onload = () =>{
             const response = await fetch('http://localhost:3000/create_informacion_nino', {
                 method: 'POST',
                 headers:{
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${miToken}`
                 },
+
+
                 body: JSON.stringify({nombre_completo_nino: nombre_completo_nino, fecha_nacimiento: fecha_nacimiento, genero: genero, lugar_nacimiento: lugar_nacimiento, numero_identificacion: numero_identificacion, experiencia_previa: experiencia_previa, expectativas_padres: expectativas_padres, nombre_padre: nombre_padre,ocupacion_padre: ocupacion_padre, lugar_trabajo_padre: lugar_trabajo_padre,  telefono_trabajo_padre: telefono_trabajo_padre, nombre_madre: nombre_madre, ocupacion_madre: ocupacion_madre, lugar_trabajo_madre: lugar_trabajo_madre, telefono_trabajo_madre: telefono_trabajo_madre,  direccion_completa: direccion_completa, telefono_emergencia: telefono_emergencia, correo_electronico: correo_electronico, estado_civil_padres: estado_civil_padres, personas_autorizadas: personas_autorizadas,documento_personas_autorizadas: documento_personas_autorizadas, consentimiento_medico: consentimiento_medico, alergias: alergias, condiciones_medicas: condiciones_medicas, vacunas_al_dia: vacunas_al_dia,medicamentos: medicamentos, seguro_medico: seguro_medico, rh_nino: rh_nino, preferencias_alimenticias: preferencias_alimenticias, habitos_sueno: habitos_sueno,necesidades_especiales: necesidades_especiales, intereses: intereses, socializacion: socializacion, metodos_disciplina: metodos_disciplina, autorizacion_salidas: autorizacion_salidas,autorizacion_fotos_videos: autorizacion_fotos_videos,autorizacion_actividades: autorizacion_actividades}),
             });
 
@@ -99,6 +108,7 @@ window.onload = () =>{
                 registerMessage.textContent = 'Registro Exitoso';
                 registerMessage.style.color = 'turquoise';
             }else{
+                console.log(data.message);
                 registerMessage.textContent = data.message || 'Error en el Registro';
                 registerMessage.style.color = 'orange';
             }
@@ -109,23 +119,4 @@ window.onload = () =>{
         }
     })
 }
-
-/*
-document.getElementById('preMatriculaForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Aquí puedes agregar la conexión con la base de datos Postgres usando un API
-    const formData = {
-        nombre: document.getElementById('nombre').value,
-        fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
-        nombre_padres: document.getElementById('nombre_padres').value,
-        telefono: document.getElementById('telefono').value,
-        email: document.getElementById('email').value,
-        comentarios: document.getElementById('comentarios').value
-    };
-
-    console.log('Formulario enviado', formData);
-
-    // Aquí podrías hacer una llamada a una API o backend para enviar los datos a la base de datos
-    alert('Formulario enviado exitosamente.');
-});*/
+}
