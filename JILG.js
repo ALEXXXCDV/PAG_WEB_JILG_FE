@@ -107,6 +107,10 @@ window.onload = () =>{
             if(response.ok){
                 registerMessage.textContent = 'Registro Exitoso';
                 registerMessage.style.color = 'turquoise';
+                Swal.fire("Mensaje de la Guardería", "La prematrícula fue registrada Exitosamente", "success");
+                setTimeout(()=> {
+                    window.location.href = "JILG.html";
+                }, 2500)
             }else{
                 console.log(data.message);
                 registerMessage.textContent = data.message || 'Error en el Registro';
