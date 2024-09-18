@@ -4,6 +4,22 @@
       {
         "src": "index.html",
         "use": "@vercel/static"
+      },
+      {
+        "src": "JILG_style.css",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "JILG.js",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "preMatricula.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "images/*",
+        "use": "@vercel/static"
       }
     ],
     "routes": [
