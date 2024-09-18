@@ -15,7 +15,7 @@ window.onload = () =>{
             const password  = document.getElementById('password').value;
     
             try {
-                const response = await fetch('http://localhost:3000/api/login', {
+                const response = await fetch('https://pagwebjilgbe-one.vercel.app/api/login', {
                     method: 'POST',
                     headers:{
                         'Content-Type': 'application/json'
@@ -90,7 +90,7 @@ window.onload = () =>{
         const autorizacion_actividades  = document.getElementById('autorizacion_actividades').value;
 
         try {
-            const response = await fetch('http://localhost:3000/create_informacion_nino', {
+            const response = await fetch('https://pagwebjilgbe-one.vercel.app/create_informacion_nino', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
