@@ -102,22 +102,18 @@ window.onload = () =>{
             });
 
             const data = await response.json();
-            console.log(data);
-
             if(response.ok){
                 registerMessage.textContent = 'Registro Exitoso';
                 registerMessage.style.color = 'turquoise';
                 Swal.fire("Mensaje de la Guardería", "La prematrícula fue registrada Exitosamente", "success");
                 setTimeout(()=> {
-                    window.location.href = "JILG.html";
+                    window.location.href = "index.html";
                 }, 2500)
             }else{
-                console.log(data.message);
                 registerMessage.textContent = data.message || 'Error en el Registro';
                 registerMessage.style.color = 'orange';
             }
         } catch (error) {
-            console.log(error)
             registerMessage.textContent = 'No se pudo realizar el REGISTRO';
             registerMessage.style.color = 'grey'
         }
